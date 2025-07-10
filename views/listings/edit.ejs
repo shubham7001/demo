@@ -1,0 +1,99 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body class="edit-listing-body container-fluid p-0">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8 gsap-form">
+      <h1 class="mb-3 edit-listings-heading">Edit Listing</h1>
+      <form
+        method="post"
+        action="/listings/update/<%= listing._id %>?_method=PUT"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3 title">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            value="<%= listing.title %>"
+            placeholder="Enter Title"
+            name="listing[title]"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Title is required!</div>
+        </div>
+        <div class="mb-3 description">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            type="text"
+            placeholder="Enter description"
+            name="listing[description]"
+            class="form-control"
+            required
+          >
+<%= listing.description %></textarea
+          >
+          <div class="invalid-feedback">Description is required!</div>
+        </div>
+        <div class="mb-3 oldimage">
+          <img
+            src="<%=originalImageUrl%>"
+            alt="oldimage"
+            class="img-fluid"
+            style="max-width: 250px"
+          />
+        </div>
+
+        <div class="mb-3 image">
+          <label for="image" class="form-label">Upload New Image</label>
+          <input
+            type="file"
+            placeholder="Enter image"
+            name="listing[image]"
+            class="form-control"
+          />
+          <div class="invalid-feedback">Image is required!</div>
+        </div>
+        <div class="row price-country">
+          <div class="col-md-4 mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              value="<%= listing.price %>"
+              placeholder="Enter price"
+              name="listing[price]"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Price is required!</div>
+          </div>
+          <div class="col-md-8 mb-3">
+            <label for="country" class="form-label">Country</label>
+            <input
+              type="text"
+              value="<%= listing.country %>"
+              placeholder="Enter country"
+              name="listing[country]"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Country is required!</div>
+          </div>
+        </div>
+        <div class="mb-3 location">
+          <label for="location" class="form-label">Location</label>
+          <input
+            type="text"
+            value="<%= listing.location %>"
+            placeholder="Enter location"
+            name="listing[location]"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Location is required!</div>
+        </div>
+        <button class="btn btn-dark edit-btn mt-3 mb-3">Edit</button>
+      </form>
+    </div>
+  </div>
+</body>
